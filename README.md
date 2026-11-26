@@ -249,6 +249,7 @@ try {
 | `antenna-drag` | Antenna drag, spring return, and a dizzy reaction; set to `false` to disable |
 | `idle-gaze` | While idle the eyes glance around now and then; `false` keeps them looking ahead |
 | `skin` | Skin number, such as `301`; leave it out for the flat color |
+| `head-shape` | `diamond`, `pentagon`, `hexagon`, `octagon` or `shield`; leave it out for the rounded head |
 
 Common runtime controls:
 
@@ -256,6 +257,7 @@ Common runtime controls:
 avatar.setPointerFollow(false);
 avatar.setIdleGaze(false);
 avatar.setHeadRoundness(75);
+avatar.setHeadShape('hexagon'); // null goes back to the rounded head
 avatar.setPressSqueeze(true);
 avatar.setAntennaDrag(true);
 avatar.setView('3d');
@@ -264,6 +266,14 @@ avatar.setPetting(false); // turn petting off
 ```
 
 The avatar center begins the squeeze interaction. Moving more than 4 CSS pixels transfers the same pointer gesture to the existing head drag. Dragging the antenna uses the same pull limit as head dragging and ends with the dizzy expression.
+
+## Head shapes
+
+`head-shape` (or `setHeadShape()`) draws the head as a polygon: `diamond`, `pentagon`, `hexagon`, `octagon` or `shield`. Skins, the drag wobble and the 3D head follow the shape. The shape stays on when the roundness changes, and `setHeadShape(null)` goes back to the rounded head that `setHeadRoundness()` sets. `HEAD_SHAPES` lists the shapes. There is no triangle, because the eyes don't fit inside one.
+
+```html
+<boop-face head-shape="shield" skin="905"></boop-face>
+```
 
 ## 3D head · New in 0.9
 

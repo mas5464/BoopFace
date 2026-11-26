@@ -27,7 +27,7 @@ function showOnly(svg, keep) {
   for (const s of hidden) prune(s);
 }
 
-export async function captureSkin(skin, roundness = 50, { color = null, eyeColor = null, eyeStyle = null } = {}) {
+export async function captureSkin(skin, roundness = 50, { color = null, eyeColor = null, eyeStyle = null, headShape = null } = {}) {
   const el = document.createElement('boop-face');
   el.style.cssText = 'position:fixed;left:-9999px;top:0;--face-size:240px';
   if (skin) el.setAttribute('skin', skin);
@@ -38,6 +38,7 @@ export async function captureSkin(skin, roundness = 50, { color = null, eyeColor
   document.body.append(el);
   // The square-to-round head shape is part of what gets painted.
   el.setHeadRoundness?.(roundness);
+  if (headShape) el.setHeadShape?.(headShape);
   const root = el.shadowRoot;
   // Painters are preloaded by the page, so a skin is usually in place within a
   // frame or two; check every frame instead of waiting a fixed time.

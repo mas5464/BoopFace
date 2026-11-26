@@ -8,6 +8,7 @@ import './src/boopface-failure.js';
 import './src/boopface-love.js';
 import './src/boopface-random.js';
 import './src/boopface-head-roundness.js';
+import { HEAD_SHAPES } from './src/boopface-head-shape.js';
 import './src/boopface-gestures.js';
 import { SKIN_NAMES, SKINS, SKIN_SERIES, loadSkins } from './src/boopface-skins.js';
 import './src/boopface-new-expressions.js';
@@ -33,6 +34,6 @@ if (typeof window !== 'undefined') {
   window.BoopFaceVersion = window.AgentRobotAvatarVersion = VERSION;
 }
 
-export { BoopFace, BoopFace as AgentRobotAvatar, SKIN_NAMES, SKINS, SKIN_SERIES, VERSION, loadSkins, connectAgent };
+export { BoopFace, BoopFace as AgentRobotAvatar, HEAD_SHAPES, SKIN_NAMES, SKINS, SKIN_SERIES, VERSION, loadSkins, connectAgent };
 // AgentRobotAvatar: the 0.7 name, kept until 1.0.
 export default BoopFace;
