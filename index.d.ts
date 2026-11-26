@@ -107,6 +107,13 @@ export interface BoopFaceSkinSeries {
 }
 
 /** Every skin number, in gallery order. */
+/**
+ * Head shapes for the `head-shape` attribute and `setHeadShape()`, beyond the
+ * round-to-square scale of `setHeadRoundness()`.
+ */
+export type BoopFaceHeadShape = 'diamond' | 'pentagon' | 'hexagon' | 'octagon' | 'shield';
+/** Every head shape, in the order the demo lists them. */
+export declare const HEAD_SHAPES: readonly BoopFaceHeadShape[];
 export declare const SKIN_NAMES: readonly BoopFaceSkin[];
 /** Titles and colors for every skin, by number. */
 export declare const SKINS: Readonly<Record<BoopFaceSkin, BoopFaceSkinInfo>>;
@@ -209,6 +216,14 @@ export declare class BoopFace extends HTMLElement {
   setPressSqueeze(enabled?: boolean): this;
   setAntennaDrag(enabled?: boolean): this;
   setHeadRoundness(value?: number): this;
+  /**
+   * Draws the head as a polygon. Skins, the drag wobble and the 3D head follow
+   * the shape. `null` or `'none'` returns to the rounded head set by
+   * `setHeadRoundness()`. Same as the `head-shape` attribute. Throws for an
+   * unknown shape.
+   */
+  setHeadShape(shape?: BoopFaceHeadShape | 'none' | null): this;
+  getHeadShape(): BoopFaceHeadShape | null;
   /**
    * Flat drawing ('2d', the default) or the layered 3D head ('3d') that turns
    * for real. Same as the `view` attribute.

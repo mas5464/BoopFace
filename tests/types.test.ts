@@ -1,4 +1,5 @@
 import BoopFace, {
+  HEAD_SHAPES,
   SKIN_NAMES,
   SKIN_SERIES,
   SKINS,
@@ -8,6 +9,7 @@ import BoopFace, {
   type BoopFaceActionSource,
   type BoopFaceActionStateDetail,
   type BoopFaceCanonicalAction,
+  type BoopFaceHeadShape,
   type BoopFaceMotion,
   type BoopFaceSkin,
   type BoopFaceState,
@@ -45,12 +47,20 @@ avatar
   .setPointerFollow(false)
   .setAntennaFlash(true)
   .setHeadRoundness(50)
+  .setHeadShape('hexagon')
+  .setHeadShape(null)
   .setSkin('1001')
   .setSkin(1717)
   .setSkin(null)
   .reset();
 
 const roundness: number = avatar.getHeadRoundness();
+const shape: BoopFaceHeadShape | null = avatar.getHeadShape();
+void shape;
+const firstShape: BoopFaceHeadShape | undefined = HEAD_SHAPES[0];
+void firstShape;
+// @ts-expect-error triangles are not a head shape
+avatar.setHeadShape('triangle');
 const skin: BoopFaceSkin | null = avatar.getSkin();
 void skin;
 const firstSkin: BoopFaceSkin | undefined = SKIN_NAMES[0];

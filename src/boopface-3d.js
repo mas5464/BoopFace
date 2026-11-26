@@ -23,7 +23,7 @@ function wantedView(face) {
 // What the 3D head is painted from; when any of it changes, it is rebuilt.
 function paintKey(face) {
   return [skinOf(face), face.getAttribute('color') || '', face.getAttribute('eye-color') || '', face.getAttribute('eye-style') || '',
-    Math.round(face._headRoundness ?? 50), Math.round(face.getBoundingClientRect().width || 0)].join('|');
+    Math.round(face._headRoundness ?? 50), Math.round(face.getBoundingClientRect().width || 0), face.getHeadShape?.() || ''].join('|');
 }
 
 async function wallColors(face) {
@@ -68,6 +68,7 @@ async function build(face, v, key) {
   const size = Math.round(face.getBoundingClientRect().width) || 112;
   const captured = await captureSkin(skinOf(face) || null, face._headRoundness ?? 50, {
     color: face.getAttribute('color'), eyeColor: face.getAttribute('eye-color'), eyeStyle: face.getAttribute('eye-style'),
+    headShape: face.getHeadShape?.() || null,
   });
   if (token !== v.token || !face.isConnected) return;
   const sideColors = await wallColors(face);

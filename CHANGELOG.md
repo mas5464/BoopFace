@@ -4,6 +4,12 @@ All notable user-facing changes to BoopFace (called Agent Robot Avatar before 0.
 
 The project follows Semantic Versioning for public releases. Internal development build numbers are not part of the public version history.
 
+## [Unreleased]
+
+### Added
+
+- **Head shapes.** `head-shape="hexagon"` (or `setHeadShape('hexagon')`) draws the head as a polygon: `diamond`, `pentagon`, `hexagon`, `octagon` or `shield`. Skins, the drag wobble and the 3D head follow the shape, and it stays on when the roundness changes. `setHeadShape(null)` goes back to the rounded head, `getHeadShape()` reads the shape, and `HEAD_SHAPES` lists them. Both the full and the lite build include it.
+
 ## [0.9.0] - 2026-11-25
 
 This release brings the 3D head, a new demo, and everything planned for 0.8.1 (Connect AI and the Voice Interaction Kit), which was never published on its own.
